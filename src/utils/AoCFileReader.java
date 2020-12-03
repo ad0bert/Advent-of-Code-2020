@@ -52,7 +52,6 @@ public class AoCFileReader {
         return res;
     }
 
-
     public static List<List<String>> readListOfCharList(File f) {
         List<List<String>> res = new ArrayList<List<String>>();
         try (BufferedReader br = new BufferedReader(new FileReader(f))) {
