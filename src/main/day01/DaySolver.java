@@ -42,5 +42,4 @@ public class DaySolver extends AbstractSolver {
         }
     }
 
-
 }

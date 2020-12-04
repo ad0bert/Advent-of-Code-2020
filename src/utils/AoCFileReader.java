@@ -136,4 +136,29 @@ public class AoCFileReader {
         return res;
     }
 
+    public static List<String> readPassports(File f) {
+        List<String> passports = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line = "";
+            String passport = "";
+            while ((line = br.readLine()) != null) {
+                if (line.isEmpty()) {
+                    passports.add(passport);
+                    passport = "";
+                    continue;
+                } else if (passport.isEmpty()){
+                    passport = line;
+                } else {
+                    passport += " " + line;
+                }
+            }
+            passports.add(passport);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return passports;
+    }
+
 }
