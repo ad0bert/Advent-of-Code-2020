@@ -161,4 +161,29 @@ public class AoCFileReader {
         return passports;
     }
 
+    public static List<String> readCustomDeclarationForms(File f) {
+        List<String> declarations = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line = "";
+            String declaration = "";
+            while ((line = br.readLine()) != null) {
+                if (line.isEmpty()) {
+                    declarations.add(declaration);
+                    declaration = "";
+                    continue;
+                } else if (declaration.isEmpty()){
+                    declaration = line;
+                } else {
+                    declaration += " " + line;
+                }
+            }
+            declarations.add(declaration);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return declarations;
+    }
+
 }
