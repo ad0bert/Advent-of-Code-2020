@@ -22,6 +22,21 @@ public class AoCFileReader {
         return res;
     }
 
+    public static List<Long> readLongLineByLine(File f) {
+        List<Long> res = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(f))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                res.add(Long.parseLong(line));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
+    }
+
     public static List<Integer> readIntegerLine(File f) {
         List<Integer> res = new ArrayList<Integer>();
         try (BufferedReader br = new BufferedReader(new FileReader(f))) {
